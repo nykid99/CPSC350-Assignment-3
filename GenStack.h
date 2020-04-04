@@ -12,8 +12,9 @@ public:
   GenStack(int maxSize);//overloaded constructor
   ~GenStack();
   void push(T data); // insert
+  void dynamicStack();
   T pop(); //remove
-  bool isFull();
+  bool isFull(); //"/home/CPSC350/CPSC350-Assignment-3/input.txt";
   bool isEmpty();
   T peek();
   T *myArray;
@@ -44,8 +45,8 @@ GenStack<T>::~GenStack() //destructor
 template <typename T>
 void GenStack<T>::push(T data){ //push method
   if(isFull()){
-    cout << "it is full" << endl;
-  }
+    dynamicStack();
+    }
   else{
     myArray[++top] = data;
   }
@@ -81,4 +82,12 @@ bool GenStack<T>::isEmpty(){
 template <typename T>
 bool GenStack<T>::isFull(){
   return (top == mSize-1);
+}
+
+template <typename T>
+void GenStack<T>::dynamicStack(){
+  T *newArray = new T[mSize+6];
+  for (int i = 0; i < mSize; ++i){
+    newArray[i] = myArray[i];
+  }
 }
